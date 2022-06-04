@@ -42,7 +42,7 @@ func _physics_process(delta):
 		motion.y += -ACCEL
 	
 	if Input.is_action_pressed("sprint"):
-		ACCEL = 40
+		ACCEL = 80
 	if Input.is_action_just_released("sprint"):
 		ACCEL = 15;
 	
