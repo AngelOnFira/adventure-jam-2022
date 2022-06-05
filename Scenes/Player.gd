@@ -10,6 +10,15 @@ var facing_right = true;
 var sprinting = false;
 var motion = Vector2();
 
+enum Direction {
+	UP,
+	DOWN,
+	LEFT,
+	RIGHT
+}
+
+var last_direction = Direction.DOWN;
+
 func _ready():
 	pass 
 
@@ -45,5 +54,33 @@ func _physics_process(delta):
 		ACCEL = 80
 	if Input.is_action_just_released("sprint"):
 		ACCEL = 15;
+
+	print(motion)
+
+	# Animate in the direction that our velocity is pointing
+	if motion.x > 0:
+		$AnimationPlayer.play("walk_right");
+		last_direction = Direction.RIGHT;
+	elif motion.x < 0:
+		$AnimationPlayer.play("walk_left");
+		last_direction = Direction.LEFT;
+	elif motion.y > 0:
+		$AnimationPlayer.play("walk_down");
+		last_direction = Direction.DOWN;
+	elif motion.y < 0:
+		$AnimationPlayer.play("walk_up");
+		last_direction = Direction.UP;
+
+	# If we're not moving, stop the animation
+	if motion.length() < 0.3:
+		if last_direction == Direction.RIGHT:
+			$AnimationPlayer.play("idle_right");
+		elif last_direction == Direction.LEFT:
+			$AnimationPlayer.play("idle_left");
+		elif last_direction == Direction.DOWN:
+			$AnimationPlayer.play("idle_down");
+		elif last_direction == Direction.UP:
+			$AnimationPlayer.play("idle_up");
+
 	
-	motion = move_and_slide(motion, motion)
+	motion = move_and_slide(motion * delta * 60)
