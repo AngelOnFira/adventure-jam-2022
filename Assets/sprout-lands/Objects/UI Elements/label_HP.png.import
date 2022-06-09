@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/icon.png-487276ed1e3a0c39cad0279d744ee560.stex"
+path="res://.import/label_HP.png-b12cc9e5c3435411842b6a1a51acc3e0.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://icon.png"
-dest_files=[ "res://.import/icon.png-487276ed1e3a0c39cad0279d744ee560.stex" ]
+source_file="res://Assets/sprout-lands/Objects/UI Elements/label_HP.png"
+dest_files=[ "res://.import/label_HP.png-b12cc9e5c3435411842b6a1a51acc3e0.stex" ]
 
 [params]
 
