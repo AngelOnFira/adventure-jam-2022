@@ -19,10 +19,10 @@ func _ready():
 	change_menu_color()
 
 func _input(event):
-	if Input.is_action_just_pressed("ui_down"):
+	if Input.is_action_just_pressed("ui_down") or Input.is_action_just_pressed("down"):
 		selected_menu = (selected_menu + 1) % 3;
 		change_menu_color()
-	elif Input.is_action_just_pressed("ui_up"):
+	elif Input.is_action_just_pressed("ui_up") or Input.is_action_just_pressed("up"):
 		if selected_menu > 0:
 			selected_menu = selected_menu - 1
 		else:
