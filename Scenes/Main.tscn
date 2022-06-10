@@ -2,7 +2,7 @@
 
 [ext_resource path="res://Scripts/Main.gd" type="Script" id=1]
 [ext_resource path="res://Assets/Main.tres" type="TileSet" id=2]
-[ext_resource path="res://Scenes/Interface.tscn" type="PackedScene" id=3]
+[ext_resource path="res://Scenes/Cow.tscn" type="PackedScene" id=3]
 [ext_resource path="res://Assets/sprout-lands/Objects/Basic Grass Biom things 1.png" type="Texture" id=4]
 [ext_resource path="res://Assets/sprout-lands/Tilesets/Water.png" type="Texture" id=5]
 [ext_resource path="res://Scenes/Player.tscn" type="PackedScene" id=6]
@@ -77,11 +77,10 @@ format = 1
 tile_data = PoolIntArray( 131114, 1, 0, 262148, 0, 0, 1769505, 536870912, 0 )
 
 [node name="Player" parent="." instance=ExtResource( 6 )]
+position = Vector2( 165, 115 )
 
-[node name="Interface" parent="." instance=ExtResource( 3 )]
-anchor_right = 0.0
-anchor_bottom = 0.0
-margin_left = 2.0
-margin_top = -3.0
-margin_right = 1024.0
-margin_bottom = 598.0
+[node name="Cow" parent="." instance=ExtResource( 3 )]
+position = Vector2( 236, 119 )
+
+[node name="Cow2" parent="." instance=ExtResource( 3 )]
+position = Vector2( 154, 158 )
