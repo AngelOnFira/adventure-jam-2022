@@ -7,7 +7,6 @@ var ACCEL = 15;
 var dashing = false
 var startDash = -1;
 var dashingCounter = 0;
-var facing_right = true;
 
 var sprinting = false;
 var motion = Vector2();
@@ -31,15 +30,6 @@ func _physics_process(delta):
 	motion.y = clamp(motion.y, -MAXSPEED, MAXSPEED);
 	motion.x = clamp(motion.x, -MAXSPEED, MAXSPEED);
 	
-#	if facing_right:
-#		$AnimatedSprite.scale.x = 1;
-#	else:
-#		$AnimatedSprite.scale.x = -1;
-#
-#	if !Input.is_action_pressed("right") && !Input.is_action_pressed("left") && !Input.is_action_pressed("down") && !Input.is_action_pressed("up"):
-#		$AnimatedSprite.play("Idle");
-#	else:
-#		$AnimatedSprite.play("Run");
 	
 	if Input.is_action_pressed("sprint") and !dashing and startDash == -1:
 		ACCEL = 190
@@ -48,10 +38,8 @@ func _physics_process(delta):
 	if !dashing:
 		if Input.is_action_pressed("right"):
 			motion.x += ACCEL
-			facing_right = true;
 		if Input.is_action_pressed("left"):
 			motion.x += -ACCEL
-			facing_right = false;
 		if Input.is_action_pressed("down"):
 			motion.y += ACCEL
 		if Input.is_action_pressed("up"):
@@ -70,7 +58,9 @@ func _physics_process(delta):
 			ACCEL = 15;
 			dashingCounter = 0;
 	
+	
 	# Animate in the direction that our velocity is pointing
+	# nice usage of EPSILON to make the movement animation smoother (:
 	if motion.x > EPSILON:
 		$AnimationPlayer.play("walk_right");
 		last_direction = Direction.RIGHT;
