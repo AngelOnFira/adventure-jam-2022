@@ -2,9 +2,10 @@ extends KinematicBody2D
 
 
 
-
 var motion = Vector2();
 var randomMotion = 0;
+
+var detectionRadius = 100; # the pixel size of the detection radius of the cow.
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
@@ -26,7 +27,13 @@ func _physics_process(delta):
 	
 	draw_circle(direction, 0.4, Color.red)
 	var motion = direction * 1/(randi()%5 + 1) * delta
-	position += motion
 	
-	move_and_slide(motion * delta * 60);
+	
+	var tempx = abs(($"../Player").position.x - position.x)
+	var tempy = abs(($"../Player").position.y - position.y)
+	
+	if((tempx*tempx + tempy*tempy) < detectionRadius*detectionRadius):
+		position += motion
+		print((tempx*tempx + tempy*tempy))
+		print(detectionRadius*detectionRadius)
 	
