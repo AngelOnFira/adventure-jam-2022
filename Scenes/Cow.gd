@@ -35,6 +35,8 @@ func _physics_process(delta):
 	var tempy = abs(($"../Player").position.y - position.y)
 	
 	if((tempx*tempx + tempy*tempy) < detectionRadius*detectionRadius):
+		$AnimatedSprite.play("move")
+		
 		timeTillDash += delta
 		
 		if (timeTillDash > secondsToDash):
@@ -45,4 +47,6 @@ func _physics_process(delta):
 		position += motion
 		#print((tempx*tempx + tempy*tempy))
 		#print(detectionRadius*detectionRadius)
+	else:
+		$AnimatedSprite.play("idle")
 	
