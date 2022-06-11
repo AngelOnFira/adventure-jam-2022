@@ -6,6 +6,8 @@ var motion = Vector2();
 var randomMotion = 0;
 
 var detectionRadius = 100; # the pixel size of the detection radius of the cow.
+var timeTillDash = 0;
+var secondsToDash = 6;
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
@@ -33,7 +35,14 @@ func _physics_process(delta):
 	var tempy = abs(($"../Player").position.y - position.y)
 	
 	if((tempx*tempx + tempy*tempy) < detectionRadius*detectionRadius):
+		timeTillDash += delta
+		
+		if (timeTillDash > secondsToDash):
+			motion = direction * 3 * delta
+			if timeTillDash > secondsToDash + 0.5:
+				timeTillDash = 0
+		
 		position += motion
-		print((tempx*tempx + tempy*tempy))
-		print(detectionRadius*detectionRadius)
+		#print((tempx*tempx + tempy*tempy))
+		#print(detectionRadius*detectionRadius)
 	
