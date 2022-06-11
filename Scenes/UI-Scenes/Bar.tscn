@@ -1,10 +1,9 @@
-[gd_scene load_steps=6 format=2]
+[gd_scene load_steps=5 format=2]
 
 [ext_resource path="res://default_font.tres" type="Theme" id=1]
 [ext_resource path="res://Assets/sprout-lands/Objects/UI Elements/primarybar.png" type="Texture" id=2]
-[ext_resource path="res://Assets/sprout-lands/Objects/UI Elements/fill.png" type="Texture" id=3]
 [ext_resource path="res://Assets/sprout-lands/Objects/UI Elements/label_HP.png" type="Texture" id=4]
-[ext_resource path="res://Assets/sprout-lands/Objects/UI Elements/label_bg.png" type="Texture" id=5]
+[ext_resource path="res://rupee.png" type="Texture" id=5]
 
 [node name="Bar" type="HBoxContainer"]
 margin_right = 40.0
@@ -52,4 +51,4 @@ margin_right = 590.0
 margin_bottom = 53.0
 value = 50.0
 texture_under = ExtResource( 2 )
-texture_progress = ExtResource( 3 )
+texture_progress = ExtResource( 5 )
