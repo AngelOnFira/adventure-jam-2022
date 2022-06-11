@@ -2,11 +2,11 @@ extends KinematicBody2D
 
 const EPSILON = 1
 const UP = Vector2(0,-1);
-const MAXSPEED = 90;
-const MAXSPRINTSPEED = 150;
+const MAXSPEED = 190;
 var ACCEL = 15;
-
-var facing_right = true;
+var dashing = false
+var startDash = -1;
+var dashingCounter = 0;
 
 var sprinting = false;
 var motion = Vector2();
@@ -30,35 +30,37 @@ func _physics_process(delta):
 	motion.y = clamp(motion.y, -MAXSPEED, MAXSPEED);
 	motion.x = clamp(motion.x, -MAXSPEED, MAXSPEED);
 	
-#	if facing_right:
-#		$AnimatedSprite.scale.x = 1;
-#	else:
-#		$AnimatedSprite.scale.x = -1;
-#
-#	if !Input.is_action_pressed("right") && !Input.is_action_pressed("left") && !Input.is_action_pressed("down") && !Input.is_action_pressed("up"):
-#		$AnimatedSprite.play("Idle");
-#	else:
-#		$AnimatedSprite.play("Run");
 	
-	if Input.is_action_pressed("right"):
-		motion.x += ACCEL
-		facing_right = true;
-	if Input.is_action_pressed("left"):
-		motion.x += -ACCEL
-		facing_right = false;
-	if Input.is_action_pressed("down"):
-		motion.y += ACCEL
-	if Input.is_action_pressed("up"):
-		motion.y += -ACCEL
+	if Input.is_action_pressed("sprint") and !dashing and startDash == -1:
+		ACCEL = 190
+		startDash = 2
+		
+	if !dashing:
+		if Input.is_action_pressed("right"):
+			motion.x += ACCEL
+		if Input.is_action_pressed("left"):
+			motion.x += -ACCEL
+		if Input.is_action_pressed("down"):
+			motion.y += ACCEL
+		if Input.is_action_pressed("up"):
+			motion.y += -ACCEL
+			
+		if startDash > 0:
+			startDash -= 1;
+		elif startDash == 0:
+			dashing = true;
+			startDash = -1;
+
+	else:
+		dashingCounter += delta;
+		if(dashingCounter > 0.3):
+			dashing = false;
+			ACCEL = 15;
+			dashingCounter = 0;
 	
-	if Input.is_action_pressed("sprint"):
-		ACCEL = 80
-	if Input.is_action_just_released("sprint"):
-		ACCEL = 15;
-
-	print(motion)
-
+	
 	# Animate in the direction that our velocity is pointing
+	# nice usage of EPSILON to make the movement animation smoother (:
 	if motion.x > EPSILON:
 		$AnimationPlayer.play("walk_right");
 		last_direction = Direction.RIGHT;
