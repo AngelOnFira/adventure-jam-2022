@@ -2,8 +2,8 @@ extends KinematicBody2D
 
 const EPSILON = 1
 const UP = Vector2(0,-1);
-const MAXSPEED = 190;
-var ACCEL = 15;
+const MAXSPEED = 210;
+var ACCEL = 10;
 var dashing = false
 var startDash = -1;
 var dashingCounter = 0;
@@ -32,7 +32,7 @@ func _physics_process(delta):
 	
 	
 	if Input.is_action_pressed("sprint") and !dashing and startDash == -1:
-		ACCEL = 190
+		ACCEL = 210
 		startDash = 2
 		
 	if !dashing:
