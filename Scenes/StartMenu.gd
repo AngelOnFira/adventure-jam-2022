@@ -39,7 +39,8 @@ func _input(event):
 		match selected_menu:
 			0:
 				# New game
-				get_tree().change_scene("res://Scenes/Main.tscn")
+				#get_tree().change_scene("res://Scenes/Main.tscn")
+				get_tree().change_scene("res://Scenes/Cutscene.tscn")
 			1:
 				# Quit game
 				get_tree().quit()
