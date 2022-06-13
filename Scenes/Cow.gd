@@ -15,24 +15,24 @@ func _ready():
 
 
 func _physics_process(delta): 
-	#if(position != null):
-	var direction = (($"../Player").position - position)
+	var direction;
+	var player = $"../../Player"
+	direction = (player.position - position)
 	direction.normalized()
 	
 	#print(($"../Player").position.x - position.x)
 	
-	if (($"../Player").position.x - position.x < 0 and scale.x != -1):
+	if (player.position.x - position.x < 0 and scale.x != -1):
 		$AnimatedSprite.scale.x = -1;
 	else:
 		$AnimatedSprite.scale.x = 1;
 	
 	
-	draw_circle(direction, 0.4, Color.red)
 	var motion = direction * 1/(randi()%5 + 1) * delta
 	
 	
-	var tempx = abs(($"../Player").position.x - position.x)
-	var tempy = abs(($"../Player").position.y - position.y)
+	var tempx = abs(player.position.x - position.x)
+	var tempy = abs(player.position.y - position.y)
 	
 	if((tempx*tempx + tempy*tempy) < detectionRadius*detectionRadius):
 		$AnimatedSprite.play("move")
