@@ -73,7 +73,7 @@ func _physics_process(delta):
 	elif motion.y < EPSILON * -1: 
 		$AnimationPlayer.play("walk_up");
 		last_direction = Direction.UP;
-
+	
 	# If we're not moving, stop the animation
 	if motion.length() < EPSILON:
 		if last_direction == Direction.RIGHT:
@@ -84,6 +84,7 @@ func _physics_process(delta):
 			$AnimationPlayer.play("idle_down");
 		elif last_direction == Direction.UP:
 			$AnimationPlayer.play("idle_up");
-
+	
+	
 	
 	motion = move_and_slide(motion * delta * 60)
