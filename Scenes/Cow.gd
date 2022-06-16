@@ -53,7 +53,7 @@ func _physics_process(delta):
 		
 		if (is_instance_valid(collider)):
 			if (collider == player and !stopCol):
-				print("Collision with player");
+				$"../../CanvasLayer/Interface/Bars/LifeBar/TextureProgress".value-=1;
 				stopCol = true;
 			
 		if (stopCol):
