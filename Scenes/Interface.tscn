@@ -1,18 +1,17 @@
-[gd_scene load_steps=6 format=2]
+[gd_scene load_steps=4 format=2]
 
-[ext_resource path="res://Scenes/UI-Scenes/RupeeCounter.tscn" type="PackedScene" id=1]
-[ext_resource path="res://Scenes/UI-Scenes/BombCounter.tscn" type="PackedScene" id=2]
+[ext_resource path="res://Scenes/UI-Scenes/RequiredCounters.tscn" type="PackedScene" id=1]
 [ext_resource path="res://Scenes/UI-Scenes/LifeBar.tscn" type="PackedScene" id=3]
 [ext_resource path="res://Scenes/UI-Scenes/EnergyBar.tscn" type="PackedScene" id=4]
-[ext_resource path="res://Scenes/UI-Scenes/LevelTimer.tscn" type="PackedScene" id=5]
 
 [node name="Interface" type="Control"]
-anchor_right = 1.252
-anchor_bottom = 1.417
-margin_left = 1.0
-margin_top = -1.0
-margin_right = -258.048
-margin_bottom = -250.2
+anchor_left = 0.000976563
+anchor_top = -0.00166667
+anchor_right = 1.0
+anchor_bottom = 1.0
+__meta__ = {
+"_edit_use_anchors_": true
+}
 
 [node name="Bars" type="VBoxContainer" parent="."]
 margin_right = 40.0
@@ -27,28 +26,4 @@ margin_top = 57.0
 margin_right = 590.0
 margin_bottom = 97.0
 
-[node name="Counters" type="HBoxContainer" parent="."]
-anchor_left = 1.0
-anchor_right = 1.0
-margin_left = -436.0
-margin_top = 16.0
-margin_right = -32.0
-margin_bottom = 56.0
-
-[node name="RupeeCounter" parent="Counters" instance=ExtResource( 1 )]
-margin_left = 0.0
-margin_top = 0.0
-margin_right = 135.0
-margin_bottom = 80.0
-
-[node name="BombCounter" parent="Counters" instance=ExtResource( 2 )]
-margin_left = 139.0
-margin_top = 0.0
-margin_right = 274.0
-margin_bottom = 80.0
-
-[node name="LevelTimer" parent="Counters" instance=ExtResource( 5 )]
-anchor_right = 0.0
-anchor_bottom = 0.0
-margin_left = 278.0
-margin_right = 438.0
+[node name="RequiredCounters" parent="." instance=ExtResource( 1 )]

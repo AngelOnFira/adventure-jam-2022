@@ -1,4 +1,4 @@
-[gd_scene load_steps=26 format=2]
+[gd_scene load_steps=28 format=2]
 
 [ext_resource path="res://Scripts/Main.gd" type="Script" id=1]
 [ext_resource path="res://Assets/Main.tres" type="TileSet" id=2]
@@ -14,6 +14,8 @@
 [ext_resource path="res://Assets/sprout-lands/Tilesets/Grass.png" type="Texture" id=12]
 [ext_resource path="res://Scenes/Cow.tscn" type="PackedScene" id=13]
 [ext_resource path="res://Scenes/Interface.tscn" type="PackedScene" id=14]
+[ext_resource path="res://Scenes/Pause.gd" type="Script" id=15]
+[ext_resource path="res://Scenes/UI-Scenes/AcquiredCounters.tscn" type="PackedScene" id=16]
 
 [sub_resource type="ConvexPolygonShape2D" id=9]
 points = PoolVector2Array( 16, 16, 0.644489, 16, 0, 0, 16, 0.57959 )
@@ -955,7 +957,43 @@ tile_data = PoolIntArray( 4259930, -2147483648, 0, 4259931, 536870913, 0, 425993
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 
+[node name="CanvasLayer2" type="CanvasLayer" parent="CanvasLayer"]
+layer = 50
+
+[node name="Pause" type="Control" parent="CanvasLayer/CanvasLayer2"]
+pause_mode = 2
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_top = 4.0
+margin_bottom = 4.0
+script = ExtResource( 15 )
+
+[node name="AcquiredCounters" parent="CanvasLayer/CanvasLayer2/Pause" instance=ExtResource( 16 )]
+pause_mode = 2
+process_priority = 16
+visible = false
+light_mask = 0
+margin_left = -574.0
+margin_top = 145.0
+margin_right = -414.0
+margin_bottom = 429.0
+rect_min_size = Vector2( 160, 284 )
+
+[node name="Overlay" type="ColorRect" parent="CanvasLayer/CanvasLayer2/Pause"]
+pause_mode = 2
+process_priority = -19
+visible = false
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_right = 422.0
+margin_bottom = 207.0
+color = Color( 0.0627451, 0.921569, 0.0941176, 1 )
+
 [node name="Interface" parent="CanvasLayer" instance=ExtResource( 14 )]
+margin_left = -1.0
+margin_top = 2.0
+margin_right = -1.0
+margin_bottom = 2.0
 
 [node name="Cows" type="Node2D" parent="."]
 
@@ -970,4 +1008,3 @@ position = Vector2( 521, 193 )
 
 [node name="Cow4" parent="Cows" instance=ExtResource( 13 )]
 position = Vector2( 227, 395 )
-
