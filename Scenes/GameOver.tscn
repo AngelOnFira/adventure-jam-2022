@@ -23,9 +23,10 @@ default_font = SubResource( 3 )
 script = ExtResource( 1 )
 
 [node name="Bkg" type="ColorRect" parent="."]
-margin_top = -1.0
-margin_right = 1027.0
-margin_bottom = 604.0
+margin_left = -467.0
+margin_top = -352.0
+margin_right = 1522.0
+margin_bottom = 1014.0
 rect_pivot_offset = Vector2( 521, 296 )
 color = Color( 0, 0, 0, 1 )
 
@@ -78,3 +79,7 @@ margin_right = 191.0
 margin_bottom = 27.0
 theme = SubResource( 4 )
 text = "Quit?"
+
+[node name="Camera" type="Camera2D" parent="."]
+position = Vector2( 512, 302 )
+current = true

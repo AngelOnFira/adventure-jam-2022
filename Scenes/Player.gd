@@ -1,7 +1,6 @@
 extends KinematicBody2D
 
 const EPSILON = 1
-const UP = Vector2(0,-1);
 const MAXSPEED = 210;
 var ACCEL = 10;
 var dashing = false

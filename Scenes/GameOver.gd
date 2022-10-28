@@ -20,18 +20,19 @@ func _ready():
 
 func _input(event):
 	if event is InputEventMouseButton:
-		if ($Quit.rect_position + $Quit.rect_size/2).distance_to(event.position) < 20:
+		#$Quit.rect_size
+		if ($Quit.rect_position.x).distance_to(event.global_position) < 20:
 			get_tree().quit()
-		if ($NewGame.rect_position + $NewGame.rect_size/2).distance_to(event.position) < 20:
+		if ($NewGame.rect_position + $NewGame.rect_size/2).distance_to(event.global_position) < 20:
 			get_tree().change_scene("res://Scenes/StartMenu.tscn")
 	elif event is InputEventMouseMotion:
-		if ($Quit.rect_position + $Quit.rect_size/2).distance_to(event.position) < 20:
+		if ($Quit.rect_position + $Quit.rect_size/2).distance_to(event.global_position) < 20:
 			#print("Mouse Motion at: ", event.position)
 			$Quit.color = Color.white
 		else:
 			$Quit.color = Color.gray
 			
-		if ($NewGame.rect_position + $NewGame.rect_size/2).distance_to(event.position) < 20:
+		if ($NewGame.rect_position + $NewGame.rect_size/2).distance_to(event.global_position) < 20:
 			#print("Mouse Motion at: ", event.position)
 			$NewGame.color = Color.white
 		else:
