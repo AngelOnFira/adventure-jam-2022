@@ -1,7 +1,6 @@
 extends KinematicBody2D
 
 const EPSILON = 1
-const UP = Vector2(0,-1);
 const MAXSPEED = 210;
 var ACCEL = 10;
 var dashing = false
@@ -10,7 +9,6 @@ var dashingCounter = 0;
 
 var sprinting = false;
 var motion = Vector2();
-
 enum Direction {
 	UP,
 	DOWN,
@@ -21,7 +19,7 @@ enum Direction {
 var last_direction = Direction.DOWN;
 
 func _ready():
-	pass 
+	pass;
 
 func _physics_process(delta): 
 	
@@ -30,11 +28,14 @@ func _physics_process(delta):
 	motion.y = clamp(motion.y, -MAXSPEED, MAXSPEED);
 	motion.x = clamp(motion.x, -MAXSPEED, MAXSPEED);
 	
-	
 	if Input.is_action_pressed("sprint") and !dashing and startDash == -1:
 		ACCEL = 210
 		startDash = 2
-		
+	
+	if(get_tree().get_current_scene().get_name() == "Main"):
+		if ($"../CanvasLayer/Interface/Bars/LifeBar/TextureProgress".value <= 0):
+			get_tree().change_scene("res://Scenes/GameOver.tscn")
+	
 	if !dashing:
 		if Input.is_action_pressed("right"):
 			motion.x += ACCEL
@@ -50,7 +51,6 @@ func _physics_process(delta):
 		elif startDash == 0:
 			dashing = true;
 			startDash = -1;
-
 	else:
 		dashingCounter += delta;
 		if(dashingCounter > 0.3):

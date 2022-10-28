@@ -990,10 +990,12 @@ margin_bottom = 207.0
 color = Color( 0.0627451, 0.921569, 0.0941176, 1 )
 
 [node name="Interface" parent="CanvasLayer" instance=ExtResource( 14 )]
-margin_left = -1.0
-margin_top = 2.0
-margin_right = -1.0
-margin_bottom = 2.0
+anchor_right = 0.988281
+anchor_bottom = 0.988333
+margin_left = 1.0
+margin_top = 6.0
+margin_right = 1.0
+margin_bottom = 6.0
 
 [node name="Cows" type="Node2D" parent="."]
 

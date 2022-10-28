@@ -5,6 +5,8 @@ extends KinematicBody2D
 var motion = Vector2();
 var randomMotion = 0;
 
+var damageDoneToPlayerOnCollision = 10;
+
 var detectionRadius = 100; # the pixel size of the detection radius of the cow.
 var timeTillDash = 0;
 var secondsToDash = 6;
@@ -53,7 +55,7 @@ func _physics_process(delta):
 		
 		if (is_instance_valid(collider)):
 			if (collider == player and !stopCol):
-				$"../../CanvasLayer/Interface/Bars/LifeBar/TextureProgress".value-=1;
+				$"../../CanvasLayer/Interface/Bars/LifeBar/TextureProgress".value -= damageDoneToPlayerOnCollision;
 				stopCol = true;
 			
 		if (stopCol):
