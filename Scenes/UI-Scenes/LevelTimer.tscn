@@ -73,8 +73,8 @@ tracks/1/keys = {
 [node name="LevelTimer" type="Label"]
 anchor_right = 0.156
 anchor_bottom = 0.133
-margin_right = 160.0
-margin_bottom = 80.0
+margin_right = 0.255997
+margin_bottom = 0.199997
 rect_min_size = Vector2( 160, 80 )
 rect_pivot_offset = Vector2( 80, 40 )
 theme = ExtResource( 1 )

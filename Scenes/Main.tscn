@@ -1,4 +1,4 @@
-[gd_scene load_steps=28 format=2]
+[gd_scene load_steps=29 format=2]
 
 [ext_resource path="res://Scripts/Main.gd" type="Script" id=1]
 [ext_resource path="res://Assets/Main.tres" type="TileSet" id=2]
@@ -16,6 +16,7 @@
 [ext_resource path="res://Scenes/Interface.tscn" type="PackedScene" id=14]
 [ext_resource path="res://Scenes/Pause.gd" type="Script" id=15]
 [ext_resource path="res://Scenes/UI-Scenes/AcquiredCounters.tscn" type="PackedScene" id=16]
+[ext_resource path="res://Scenes/Plants.gd" type="Script" id=17]
 
 [sub_resource type="ConvexPolygonShape2D" id=9]
 points = PoolVector2Array( 16, 16, 0.644489, 16, 0, 0, 16, 0.57959 )
@@ -932,7 +933,8 @@ position = Vector2( 192, 113 )
 tile_set = SubResource( 5 )
 cell_size = Vector2( 16, 16 )
 format = 1
-tile_data = PoolIntArray( 262176, 3, 0, 720926, 4, 0, 786439, 3, 0, 786458, 4, 0, 786466, 7, 0, 852003, 7, 0, 983049, 5, 0, 1179656, 7, 0, 1179660, 0, 0, 1179663, 1, 0, 1245198, 2, 0, 1310731, 1, 0, 1310733, 0, 0, 1310735, 2, 0, 1310736, 2, 0, 1376271, 2, 0 )
+tile_data = PoolIntArray( 262176, 3, 0, 720926, 4, 0, 786439, 3, 0, 786458, 4, 0, 786466, 7, 0, 852003, 7, 0, 983049, 5, 0, 1114131, 2, 0, 1179656, 7, 0, 1179660, 0, 0, 1179663, 1, 0, 1179666, 2, 0, 1179667, 2, 0, 1245198, 2, 0, 1245200, 0, 0, 1245202, 2, 0, 1310731, 1, 0, 1310733, 1, 0, 1310735, 2, 0, 1310736, 2, 0, 1310737, 2, 0, 1310738, 2, 0, 1376271, 2, 0 )
+script = ExtResource( 17 )
 
 [node name="House" type="TileMap" parent="."]
 z_index = -90

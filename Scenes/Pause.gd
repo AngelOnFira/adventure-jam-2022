@@ -6,5 +6,6 @@ func _input(event):
 		get_tree().paused = new_pause_state
 		visible = new_pause_state
 		$AcquiredCounters.visible = true;
+
 		
 	

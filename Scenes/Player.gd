@@ -6,6 +6,8 @@ var ACCEL = 10;
 var dashing = false
 var startDash = -1;
 var dashingCounter = 0;
+onready var Tiles = $"../Plants" #onready (the value will change to the set value when the set value is initalized
+#var Tiles = get_parent().get_node("Plants")
 
 var sprinting = false;
 var motion = Vector2();
@@ -22,6 +24,10 @@ func _ready():
 	pass;
 
 func _physics_process(delta): 
+	print("x: " + str(position.x) + ", y: " + str(position.y))
+	if Input.is_action_just_pressed("press_enter"):
+		if ((position.x <= 217 and position.x >= 212) and (position.y <= 330 and position.y >= 325)):
+			Tiles.set_cell(13, 20, 7)
 	
 	motion.x = lerp(motion.x, 0, 0.2);
 	motion.y = lerp(motion.y, 0, 0.2);
@@ -88,3 +94,13 @@ func _physics_process(delta):
 	
 	
 	motion = move_and_slide(motion * delta * 60)
+	
+	
+
+	
+	
+	
+	
+	
+		
+		

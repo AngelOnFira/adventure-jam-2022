@@ -52,6 +52,7 @@ func _physics_process(delta):
 		#position += motion
 		if (is_instance_valid(move_and_collide(motion))):
 			collider = move_and_collide(motion).collider;
+			
 		
 		if (is_instance_valid(collider)):
 			if (collider == player and !stopCol):
