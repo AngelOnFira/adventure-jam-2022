@@ -4,12 +4,12 @@ extends VBoxContainer
 # Declare member variables here. Examples:
 # var a = 2
 # var b = "text"
-var Apple = 9
-var BlueBerry = 9
-var Corn = 9
-var PurpleMush = 9
-var Rasp = 9
-var RedMush = 9
+var Apple = 0
+var BlueBerry = 0
+var Corn = 0
+var PurpleMush = 0
+var Rasp = 0
+var RedMush = 0
 
 
 
