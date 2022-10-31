@@ -49,7 +49,7 @@ func _physics_process(delta):
 			if timeTillDash > secondsToDash + 0.5:
 				timeTillDash = 0
 		
-		#position += motion
+		position += motion
 		if (is_instance_valid(move_and_collide(motion))):
 			collider = move_and_collide(motion).collider;
 			
