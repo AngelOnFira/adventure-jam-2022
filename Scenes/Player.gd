@@ -8,7 +8,7 @@ var startDash = -1;
 var dashingCounter = 0;
 onready var Tiles = $"../Plants" #onready (the value will change to the set value when the set value is initalized
 #var Tiles = get_parent().get_node("Plants")
-onready var acquiredCount = $"../CanvasLayer/CanvasLayer2/Pause/AcquiredCounters"
+onready var acquiredCount = $"../CanvasLayer/Interface/AcquiredCounters"
 var sprinting = false;
 var motion = Vector2();
 enum Direction {
@@ -24,6 +24,7 @@ func _ready():
 	pass;
 
 func _physics_process(delta): 
+	
 	print("x: " + str(position.x) + ", y: " + str(position.y))
 	#middle corn
 	if ((position.x <= 225 and position.x >= 205) and (position.y <= 340 and position.y >= 315)):

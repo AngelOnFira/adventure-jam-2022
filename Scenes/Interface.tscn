@@ -1,6 +1,7 @@
-[gd_scene load_steps=4 format=2]
+[gd_scene load_steps=5 format=2]
 
 [ext_resource path="res://Scenes/UI-Scenes/RequiredCounters.tscn" type="PackedScene" id=1]
+[ext_resource path="res://Scenes/UI-Scenes/AcquiredCounters.tscn" type="PackedScene" id=2]
 [ext_resource path="res://Scenes/UI-Scenes/LifeBar.tscn" type="PackedScene" id=3]
 [ext_resource path="res://Scenes/UI-Scenes/EnergyBar.tscn" type="PackedScene" id=4]
 
@@ -27,3 +28,6 @@ margin_right = 590.0
 margin_bottom = 97.0
 
 [node name="RequiredCounters" parent="." instance=ExtResource( 1 )]
+visible = false
+
+[node name="AcquiredCounters" parent="." instance=ExtResource( 2 )]
