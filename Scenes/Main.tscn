@@ -15,8 +15,8 @@
 [ext_resource path="res://Scenes/Cow.tscn" type="PackedScene" id=13]
 [ext_resource path="res://Scenes/Interface.tscn" type="PackedScene" id=14]
 [ext_resource path="res://Scenes/Pause.gd" type="Script" id=15]
-[ext_resource path="res://Scenes/UI-Scenes/AcquiredCounters.tscn" type="PackedScene" id=16]
 [ext_resource path="res://Scenes/Plants.gd" type="Script" id=17]
+[ext_resource path="res://Scenes/UI-Scenes/RequiredCounters.tscn" type="PackedScene" id=18]
 
 [sub_resource type="ConvexPolygonShape2D" id=9]
 points = PoolVector2Array( 16, 16, 0.644489, 16, 0, 0, 16, 0.57959 )
@@ -970,16 +970,16 @@ margin_top = 4.0
 margin_bottom = 4.0
 script = ExtResource( 15 )
 
-[node name="AcquiredCounters" parent="CanvasLayer/CanvasLayer2/Pause" instance=ExtResource( 16 )]
-pause_mode = 2
-process_priority = 16
+[node name="RequiredCounters" parent="CanvasLayer/CanvasLayer2/Pause" instance=ExtResource( 18 )]
 visible = false
-light_mask = 0
-margin_left = -574.0
-margin_top = 145.0
-margin_right = -414.0
-margin_bottom = 429.0
-rect_min_size = Vector2( 160, 284 )
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -80.0
+margin_top = -161.0
+margin_right = 80.0
+margin_bottom = 161.0
 
 [node name="Overlay" type="ColorRect" parent="CanvasLayer/CanvasLayer2/Pause"]
 pause_mode = 2
