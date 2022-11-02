@@ -9,6 +9,7 @@ var dashingCounter = 0;
 onready var Tiles = $"../Plants" #onready (the value will change to the set value when the set value is initalized
 #var Tiles = get_parent().get_node("Plants")
 onready var acquiredCount = $"../CanvasLayer/Interface/AcquiredCounters"
+onready var Energybar = $"../CanvasLayer/Interface/Bars/EnergyBar/TextureProgress"
 var sprinting = false;
 var motion = Vector2();
 enum Direction {
@@ -25,7 +26,10 @@ func _ready():
 
 func _physics_process(delta): 
 	
-	print("x: " + str(position.x) + ", y: " + str(position.y))
+	#print("x: " + str(position.x) + ", y: " + str(position.y))
+	#print position
+	
+	
 	#middle corn
 	if ((position.x <= 225 and position.x >= 205) and (position.y <= 340 and position.y >= 315)):
 		if Tiles.get_cell(13,20) != -1:
@@ -112,9 +116,12 @@ func _physics_process(delta):
 	motion.y = clamp(motion.y, -MAXSPEED, MAXSPEED);
 	motion.x = clamp(motion.x, -MAXSPEED, MAXSPEED);
 	
+	#if Energybar.value > 20:
 	if Input.is_action_pressed("sprint") and !dashing and startDash == -1:
 		ACCEL = 210
 		startDash = 2
+		Energybar.value -= 20
+			
 	
 	if(get_tree().get_current_scene().get_name() == "Main"):
 		if ($"../CanvasLayer/Interface/Bars/LifeBar/TextureProgress".value <= 0):
