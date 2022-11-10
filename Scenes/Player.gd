@@ -19,10 +19,45 @@ enum Direction {
 	RIGHT
 }
 
+enum GroundItem{
+	CORN,
+	APPLETREE,
+	RASPBERRY,
+	REDONION,
+	PURPSHROOM,
+	BLUEBERRY
+}
+
 var last_direction = Direction.DOWN;
 
 func _ready():
 	pass;
+
+
+func pickUpGroundItem(a, b, c, d, e, f, groundItem):
+	if ((position.x <= a and position.x >= b) and (position.y <= c and position.y >= d)):
+		if Tiles.get_cell(e,f) != -1:
+			if Input.is_action_just_pressed("press_enter"):
+				Tiles.set_cell(e, f, -1)
+				if (groundItem == GroundItem.CORN):
+					acquiredCount.Corn += 1;
+				elif (groundItem == GroundItem.APPLETREE):
+					acquiredCount.AppleTree += 1;
+				elif (groundItem == GroundItem.RASPBERRY):
+					acquiredCount.RaspBerry += 1;
+				elif (groundItem == GroundItem.REDONION):
+					acquiredCount.RedOnion += 1;
+				elif (groundItem == GroundItem.PURPSHROOM):
+					acquiredCount.PurpShroom += 1;
+				elif (groundItem == GroundItem.BLUEBERRY):
+					acquiredCount.BlueBerry += 1;
+				
+#	if ((position.x <= 225 and position.x >= 205) and (position.y <= 340 and position.y >= 315)):
+#	if Tiles.get_cell(13,20) != -1:
+#		if Input.is_action_just_pressed("press_enter"):
+#			Tiles.set_cell(13, 20, -1)
+#			acquiredCount.Corn += 1
+
 
 func _physics_process(delta): 
 	
@@ -51,89 +86,32 @@ func _physics_process(delta):
 				ACCEL = 210
 				startDash = 2
 				Energybar.value -= 20
-	
-	#middle corn
-		if ((position.x <= 225 and position.x >= 205) and (position.y <= 340 and position.y >= 315)):
-			if Tiles.get_cell(13,20) != -1:
-				if Input.is_action_just_pressed("press_enter"):
-					Tiles.set_cell(13, 20, -1)
-					acquiredCount.Corn += 1
+		#middle corn
+		pickUpGroundItem(225, 205, 340, 315, 13, 20, GroundItem.CORN);
 		#left corn
-		if ((position.x <= 192 and position.x >= 172) and (position.y <= 337 and position.y >= 317)):
-			if Tiles.get_cell(11,20) != -1:
-				if Input.is_action_just_pressed("press_enter"):
-					Tiles.set_cell(11, 20, -1)
-					acquiredCount.Corn += 1
+		pickUpGroundItem(192, 172, 337, 317, 11, 20, GroundItem.CORN);
 		#right corn
-		if ((position.x <= 257 and position.x >= 237) and (position.y <= 304 and position.y >= 284)):
-			if Tiles.get_cell(15,18) != -1:
-				if Input.is_action_just_pressed("press_enter"):
-					Tiles.set_cell(15, 18, -1)
-					acquiredCount.Corn += 1
+		pickUpGroundItem(257, 237, 304, 284, 15, 18, GroundItem.CORN);
 		#leftappletree
-		if ((position.x <= 137 and position.x >= 117) and (position.y <= 225 and position.y >= 205)):
-			if Tiles.get_cell(7,12) != -1:
-				if Input.is_action_just_pressed("press_enter"):
-					Tiles.set_cell(7, 12, -1)
-					acquiredCount.Apple += 1
+		pickUpGroundItem(137, 117, 225, 205, 7, 12, GroundItem.APPLETREE);
 		#rightappletree
-		if ((position.x <= 537 and position.x >= 517) and (position.y <= 95 and position.y >= 75)):
-			if Tiles.get_cell(32,4) != -1:
-				if Input.is_action_just_pressed("press_enter"):
-					Tiles.set_cell(32, 4, -1)
-					acquiredCount.Apple += 1
+		pickUpGroundItem(537, 517, 95, 75, 32, 4, GroundItem.APPLETREE);
 		#leftraspberry
-		if ((position.x <= 209 and position.x >= 189) and (position.y <= 308 and position.y >= 288)):
-			if Tiles.get_cell(12,18) != -1:
-				if Input.is_action_just_pressed("press_enter"):
-					Tiles.set_cell(12, 18, -1)
-					acquiredCount.Rasp += 1
+		pickUpGroundItem(209, 189, 308, 288, 12, 18, GroundItem.APPLETREE);
 		#rightraspberry
-		if ((position.x <= 271 and position.x >= 251) and (position.y <= 320 and position.y >= 300)):
-			if Tiles.get_cell(16,19) != -1:
-				if Input.is_action_just_pressed("press_enter"):
-					Tiles.set_cell(16, 19, -1)
-					acquiredCount.Rasp += 1
+		pickUpGroundItem(271, 251, 320, 300, 16, 19, GroundItem.APPLETREE);
 		#leftRedMush
-		if ((position.x <= 437 and position.x >= 417) and (position.y <= 210 and position.y >= 190)):
-			if Tiles.get_cell(26,12) != -1:
-				if Input.is_action_just_pressed("press_enter"):
-					Tiles.set_cell(26, 12, -1)
-					acquiredCount.RedMush += 1
+		pickUpGroundItem(437, 417, 210, 190, 26, 12, GroundItem.REDONION);
 		#rightRedMush
-		if ((position.x <= 496 and position.x >= 476) and (position.y <= 182 and position.y >= 172)):
-			if Tiles.get_cell(30,11) != -1:
-				if Input.is_action_just_pressed("press_enter"):
-					Tiles.set_cell(30, 11, -1)
-					acquiredCount.RedMush += 1
-		#PurpMush
-		if ((position.x <= 161 and position.x >= 141) and (position.y <= 256 and position.y >= 236)):
-			if Tiles.get_cell(9,15) != -1:
-				if Input.is_action_just_pressed("press_enter"):
-					Tiles.set_cell(9, 15, -1)
-					acquiredCount.PurpleMush += 1
+		pickUpGroundItem(496, 476, 182, 172, 30, 11, GroundItem.REDONION);
+		#PurpShroom
+		pickUpGroundItem(161, 141, 256, 236, 9, 15, GroundItem.PURPSHROOM);
 		#Blue1
-		if ((position.x <= 145 and position.x >= 125) and (position.y <= 305 and position.y >= 285)):
-			if Tiles.get_cell(8,18) != -1:
-				if Input.is_action_just_pressed("press_enter"):
-					Tiles.set_cell(8, 18, -1)
-					acquiredCount.BlueBerry += 1
+		pickUpGroundItem(145, 125, 305, 285, 8, 18, GroundItem.BLUEBERRY);
 		#Blue2
-		if ((position.x <= 561 and position.x >= 541) and (position.y <= 206 and position.y >= 186)):
-			if Tiles.get_cell(34,12) != -1:
-				if Input.is_action_just_pressed("press_enter"):
-					Tiles.set_cell(34, 12, -1)
-					acquiredCount.BlueBerry += 1
+		pickUpGroundItem(561, 541, 206, 186, 34, 12, GroundItem.BLUEBERRY);
 		#Blue3
-		if ((position.x <= 579 and position.x >= 559) and (position.y <= 224 and position.y >= 204)):
-			if Tiles.get_cell(35,13) != -1:
-				if Input.is_action_just_pressed("press_enter"):
-					Tiles.set_cell(35, 13, -1)
-					acquiredCount.BlueBerry += 1
-		
-		
-		
-		
+		pickUpGroundItem(579, 559, 224, 204, 35, 13, GroundItem.BLUEBERRY);
 		
 		
 		if ($"../CanvasLayer/Interface/Bars/LifeBar/TextureProgress".value <= 0):

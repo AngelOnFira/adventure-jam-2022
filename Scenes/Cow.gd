@@ -50,8 +50,10 @@ func _physics_process(delta):
 				timeTillDash = 0
 		
 		#position += motion
-		if (is_instance_valid(move_and_collide(motion))):
-			collider = move_and_collide(motion).collider;
+		var collision = move_and_collide(motion);
+		if (is_instance_valid(collision)):
+			if (is_instance_valid(collision.collider)):
+				collider = collision.collider;
 			
 		
 		if (is_instance_valid(collider)):
