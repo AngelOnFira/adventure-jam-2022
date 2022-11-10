@@ -54,9 +54,6 @@ func _physics_process(delta):
 		if (is_instance_valid(collision)):
 			if (is_instance_valid(collision.collider)):
 				collider = collision.collider;
-			
-		
-		if (is_instance_valid(collider)):
 			if (collider == player and !stopCol):
 				$"../../CanvasLayer/Interface/Bars/LifeBar/TextureProgress".value -= damageDoneToPlayerOnCollision;
 				stopCol = true;

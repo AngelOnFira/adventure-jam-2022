@@ -8,7 +8,7 @@ var AppleTree = 0
 var BlueBerry = 0
 var Corn = 0
 var PurpShroom = 0
-var RaspBerry = 0
+var RedShroom = 0
 var RedOnion = 0
 
 # Called when the node enters the scene tree for the first time.
@@ -19,7 +19,7 @@ func _physics_process(delta):
 	$"BlueBerryCounter/Label".text = str(BlueBerry)
 	$"CornCounter/Label".text = str(Corn)
 	$"PurpleMushroomCounter/Label".text = str(PurpShroom)
-	$"RaspberryCounter/Label".text = str(RaspBerry)
+	$"RaspberryCounter/Label".text = str(RedShroom)
 	$"RedMushroomCounter/Label".text = str(RedOnion)
 	
 

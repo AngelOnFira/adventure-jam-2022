@@ -22,7 +22,7 @@ enum Direction {
 enum GroundItem{
 	CORN,
 	APPLETREE,
-	RASPBERRY,
+	REDSHROOM,
 	REDONION,
 	PURPSHROOM,
 	BLUEBERRY
@@ -43,8 +43,8 @@ func pickUpGroundItem(a, b, c, d, e, f, groundItem):
 					acquiredCount.Corn += 1;
 				elif (groundItem == GroundItem.APPLETREE):
 					acquiredCount.AppleTree += 1;
-				elif (groundItem == GroundItem.RASPBERRY):
-					acquiredCount.RaspBerry += 1;
+				elif (groundItem == GroundItem.REDSHROOM):
+					acquiredCount.RedShroom += 1;
 				elif (groundItem == GroundItem.REDONION):
 					acquiredCount.RedOnion += 1;
 				elif (groundItem == GroundItem.PURPSHROOM):
@@ -97,9 +97,9 @@ func _physics_process(delta):
 		#rightappletree
 		pickUpGroundItem(537, 517, 95, 75, 32, 4, GroundItem.APPLETREE);
 		#leftraspberry
-		pickUpGroundItem(209, 189, 308, 288, 12, 18, GroundItem.APPLETREE);
+		pickUpGroundItem(209, 189, 308, 288, 12, 18, GroundItem.REDSHROOM);
 		#rightraspberry
-		pickUpGroundItem(271, 251, 320, 300, 16, 19, GroundItem.APPLETREE);
+		pickUpGroundItem(271, 251, 320, 300, 16, 19, GroundItem.REDSHROOM);
 		#leftRedMush
 		pickUpGroundItem(437, 417, 210, 190, 26, 12, GroundItem.REDONION);
 		#rightRedMush
@@ -115,6 +115,13 @@ func _physics_process(delta):
 		
 		
 		if ($"../CanvasLayer/Interface/Bars/LifeBar/TextureProgress".value <= 0):
+			get_tree().change_scene("res://Scenes/GameOver.tscn")
+			
+		if acquiredCount.AppleTree == 2 and acquiredCount.BlueBerry == 3 and acquiredCount.Corn == 3 and acquiredCount.PurpShroom == 1 and acquiredCount.RedOnion == 2 and acquiredCount.RedShroom == 2:
+			yield(get_tree().create_timer(1.0), "timeout")
+			get_tree().paused
+			$AnimationPlayer.play("idle_down")
+			$AnimationPlayer.stop()
 			get_tree().change_scene("res://Scenes/GameOver.tscn")
 	
 	if !dashing:
